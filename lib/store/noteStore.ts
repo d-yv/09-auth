@@ -1,6 +1,6 @@
 import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
-import { CreateNoteParams } from '@/lib/api/api';
+import { CreateNoteParams } from '@/lib/api/clientApi';
 
 type NoteDraftStore = {
     draft: CreateNoteParams;
