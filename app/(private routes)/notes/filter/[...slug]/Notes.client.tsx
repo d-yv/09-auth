@@ -7,8 +7,6 @@ import { fetchNotes } from "@/lib/api/clientApi";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import Pagination from "@/components/Pagination/Pagination";
 import NoteList from "@/components/NoteList/NoteList";
-// import Modal from "@/components/Modal/Modal";
-// import NoteForm from "@/components/NoteForm/NoteForm";
 import { useRouter } from "next/navigation";
 
 type NoteListClientProps = { tag?: string };
@@ -18,9 +16,6 @@ export default function NoteListClient({ tag }: NoteListClientProps) {
   const [debouncedText] = useDebounce(searchText, 500);
   const [page, setPage] = useState(1);
   const router = useRouter();
-  // const [isModalOpen, setModalOpen] = useState(false);
-  // const openModal = () => setModalOpen(true);
-  // const closeModal = () => setModalOpen(false);
 
   useEffect(() => {
     setPage(1);
@@ -62,12 +57,6 @@ export default function NoteListClient({ tag }: NoteListClientProps) {
         {data?.notes && data.notes.length > 0 && (
           <NoteList notes={data.notes} />
         )}
-
-        {/* {isModalOpen && (
-          <Modal onClose={closeModal}>
-            <NoteForm onClose={closeModal} />
-          </Modal>
-        )} */}
       </main>
     </div>
   );

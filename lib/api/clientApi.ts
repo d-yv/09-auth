@@ -1,6 +1,7 @@
 import type {Note} from "@/types/note";
 import { nextServer } from "./api";
 import { User } from "@/types/user";
+import { log } from "node:console";
 
 export interface NoteResponse {
     notes: Note[];
@@ -27,9 +28,10 @@ export type UpdateMeRequest = {
     username?: string,
 }
 
-export async function getMe () {
-const res = await nextServer.get<User>('users/me');
-return res.data;
+export async function getMe() {
+    const res = await nextServer.get<User>('users/me');
+    console.log("message: ", res.status);
+    return res.data;
 };
 
 export async function updateMe (data: UpdateMeRequest): Promise<User> {

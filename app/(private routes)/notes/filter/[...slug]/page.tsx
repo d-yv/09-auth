@@ -1,6 +1,6 @@
 import css from "./NotesClient.module.css";
 import NoteListClient from "./Notes.client";
-import { fetchNotes } from "@/lib/api/clientApi";
+import { fetchServerNotes } from "@/lib/api/serverApi";
 import {
   QueryClient,
   HydrationBoundary,
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${slug[0]} Notes`,
       description: `${slug[0]} Notes`,
-      url: `https://08-zustand-gules-mu.vercel.app/${slug.join("/")}`,
+      url: `https://09-auth-ten-teal.vercel.app/${slug.join("/")}`,
       images: [
         {
           url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
@@ -41,7 +41,7 @@ export default async function App({ params }: Props) {
 
   queryClient.prefetchQuery({
     queryKey: ["notes", { query: "", page: 1, tag: tag }],
-    queryFn: () => fetchNotes(1, "", tag),
+    queryFn: () => fetchServerNotes(1, "", tag),
   });
   return (
     <div className={css.app}>
