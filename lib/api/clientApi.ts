@@ -1,7 +1,6 @@
 import type {Note} from "@/types/note";
 import { nextServer } from "./api";
 import { User } from "@/types/user";
-import { log } from "node:console";
 
 export interface NoteResponse {
     notes: Note[];
